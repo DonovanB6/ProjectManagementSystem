@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/Users/donovan/Desktop/AdvancedOSJava/sqljdbc4.jar"
+    ]
+}
