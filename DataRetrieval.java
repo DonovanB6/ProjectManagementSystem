@@ -83,7 +83,7 @@ public class DataRetrieval
     
     
     
-    public void printProjectsForFaculty(int facultyId, Date startDate, Date endDate) throws SQLException {
+    public void printProjectsForFaculty(int facultyId, Date startDate, Date endDate) throws Exception {
         // Create and execute an SQL statement that returns the project names for a specified faculty within a specified time range.
         String sql = "SELECT Project.pname FROM Project WHERE Project.pi = ? AND Project.sdate >= ? AND Project.edate <= ?";
         PreparedStatement stmt = connection.prepareStatement(sql);
