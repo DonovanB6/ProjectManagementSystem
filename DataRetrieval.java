@@ -31,7 +31,7 @@ public class DataRetrieval
 
         
     }
-    public void printProjectsForStudent(int studentId) throws Exception {
+    public void printProjectsForStudent(int studentId) throws SQLException {
         // Create and execute an SQL statement that returns the project names for a specified student.
         String sql = "SELECT Project.pname FROM Assigned JOIN Project ON Assigned.pid = Project.pid WHERE Assigned.sid = ?";
         PreparedStatement stmt = connection.prepareStatement(sql);
@@ -47,7 +47,7 @@ public class DataRetrieval
         stmt.close();
     }
     
-    public void printPeopleForProject(int projectId) throws Exception {
+    public void printPeopleForProject(int projectId) throws SQLException {
         // Create and execute an SQL statement that returns the student and faculty names for a specified project.
         String sql = "SELECT DISTINCT Student.sname, Faculty.fname " +
                      "FROM Assigned " +
@@ -83,7 +83,7 @@ public class DataRetrieval
     
     
     
-    public void printProjectsForFaculty(int facultyId, Date startDate, Date endDate) throws Exception {
+    public void printProjectsForFaculty(int facultyId, Date startDate, Date endDate) throws SQLException {
         // Create and execute an SQL statement that returns the project names for a specified faculty within a specified time range.
         String sql = "SELECT Project.pname FROM Project WHERE Project.pi = ? AND Project.sdate >= ? AND Project.edate <= ?";
         PreparedStatement stmt = connection.prepareStatement(sql);
@@ -101,12 +101,43 @@ public class DataRetrieval
         stmt.close();
     }
     
-    public void closeCon() throws Exception
+    public void getStudents() throws Exception
     {
-        connection.close();
+            
+            CallableStatement cstmt=connection.prepareCall("{call usp_liststudents}");   
+            rs=cstmt.executeQuery();      
+            // Iterate through the data in the result set and display it.
+            System.out.println();        
+            System.out.println("SID  SNAME           MAJOR       LEVEL BYEAR");
+            System.out.println("==============================================");
+             while (rs.next()) {
+                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4) + " "+ rs.getInt(5));
+             } 
+             rs.close();
+             cstmt.close();
     }
+
+
+    public void getFaculty() throws Exception
+    {
+            
+            CallableStatement cstmt=connection.prepareCall("{call usp_listfaculty}");   
+            rs=cstmt.executeQuery();      
+            // Iterate through the data in the result set and display it.
+            System.out.println();        
+            System.out.println("FID  FNAME    Department");
+            System.out.println("=========================");
+             while (rs.next()) {
+                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3));
+             } 
+             rs.close();
+             cstmt.close();
+    }
+
     public static void main(String args[]) throws Exception {
         DataRetrieval con = new DataRetrieval();
-        con.printPeopleForProject(1);
+        //con.printPeopleForProject(1);
+        con.getStudents();
+        con.getFaculty();
     }
 }
