@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+    <link rel="icon" type="image/png" href='rams_circle.jpg'/>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #DC1A32;
+        }
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #8A0808;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        header {
+            background-color: #DC1A32;
+            padding: 30px;
+            text-align: center;
+            font-size: 35px;
+            color: white;
+        }
+
+        nav {
+            float: left;
+            width: 30%;
+            height: 500px;
+            background: #DC1A32;
+            padding: 20px;
+            border-bottom: 3px solid black;
+            left: 0;
+            z-index: -1;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            width:100%;
+        }
+
+        article {
+            float: left;
+            padding: 40px;
+            width: 70%;
+            background-color: white;
+            height: 500px;
+            border-bottom: 3px solid black;
+        }
+
+        section:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+
+        footer {
+            background-color: white;
+            padding: 30px;
+            text-align: center;
+            color: black;
+            bottom: 0;
+        }
+
+        @media (max-width: 600px) {
+        nav, article {
+            width: 100%;
+            height: auto;
+            }
+        }
+
+        .column {
+          float: left;
+          width: 25%;
+          margin-bottom: 16px;
+          padding: 0 8px;
+        }
+
+        @media screen and (max-width: 650px) {
+          .column {
+            width: 100%;
+            display: block;
+          }
+        }
+
+        .card {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          width: 100%;
+        }
+
+        .container {
+          padding: 0 16px;
+          width: 100%;
+        }
+
+        .container::after, .row::after {
+          content: "";
+          clear: both;
+          display: table;
+          width: 100%;
+        }
+
+        .title {
+          color: grey;
+          width: 100%;
+        }
+
+    </style>
+</head>
+  <body>
+        <div style="overflow-x: hidden; border-bottom: 3px solid black; width: 100%; height: 50%; left: 0">
+          <img style="position: relative; left: 0; top: 0; height: 200px; width: 700px;" src="wssu_banner.png">
+        </div>
+        <section style="left: 0px">
+            <nav>
+                <ul>
+                    <li><a class="active" href="index.html">Home</a></li>
+                    <li><a onclick="admin()" href="admin.html" id="admin">Admin Log-in</a></li>
+                    <li><a href="queries.html">Query Info</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><img src="rams_circle2.jpg" style="position: sticky; height: 100%; width: 400px; left: 5px" alt="rams"></li>
+                </ul>
+            </nav>
+            <article>
+                <div class="column">
+                <div class="card">
+                  <img src="hector.png" alt="Hector" style="float: left; width:  100%; height: 300px; object-fit: cover;">
+                  <div class="container">
+                    <h2>Hector Santiago</h2>
+                      <p class="title"><a href="mailto:hsantiago119@rams.wssu.edu">hsantiago119@rams.wssu.edu</a></p>
+                  </div>
+                </div>
+                </div>
+                <div class="column">
+                <div class="card">
+                  <img src="donovan.jpg" alt="Donovan" style="float: left; width:  100%; height: 300px; object-fit: cover;">
+                  <div class="container">
+                    <h2>Donovan Benson</h2>
+                      <p class="title"><a href="mailto:dbenson119@rams.wssu.edu">dbenson119@rams.wssu.edu</a></p>
+                  </div>
+                </div>
+                </div>
+                <div class="column" style="width: 50%; text-align: center">
+                    <h6 style="font-size: 40px">If you have any questions or run into any issues feel free to reach out to us!</h6>
+                </div>
+
+        </article>
+        </section>
+        <footer>
+          <p style="font-size: 25px">Project-2: CS Project Management System</p>
+          <p style="font-size: 25px">Hector Santiago & Donovan Benson</p>
+          <p style="font-size: 25px">CST-6306-01</p>
+        </footer>
+  </body>
+  <script>
+      function admin(){
+          document.form.value = admin
+      }
+  </script>
+</html>
