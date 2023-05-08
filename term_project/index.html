@@ -139,13 +139,39 @@
           <p style="font-size: 25px">CST-6306-01</p>
         </footer>
   </body>
+    <script type="module" src="scripts/dbConnection.js">
+
+    </script>
+<!--  <script data-main="scripts/dbConnection" src = scripts/require.js>-->
+<!--      // function getStudent(){-->
+<!--      //   const request = new sql.Request();-->
+<!--      //     request.query('SELECT * FROM Student', function (err, result) {-->
+<!--      //       if (err) console.log(err);-->
+<!--      //       console.log(result.recordset);-->
+<!--      //       sql.close();-->
+<!--      //     })-->
+<!--    //}-->
+<!--  </script>-->
+
+<!--  <script src="testConnection.js">-->
+<!--      const xhr = new XMLHttpRequest();-->
+<!--        xhr.onreadystatechange = () => {-->
+<!--          if (xhr.readyState === 4 && xhr.status === 200) {-->
+<!--            const response = JSON.parse(xhr.responseText);-->
+<!--            console.log(response);-->
+<!--          }-->
+<!--        };-->
+<!--        xhr.open('GET', 'http://localhost:3000/data');-->
+<!--        xhr.send();-->
+<!--        console.log(xhr.responseText)-->
+<!--  </script>-->
+
   <script>
     // Get admin id
     const admin = document.getElementById('admin');
 
     // listen for admin id
     admin.addEventListener('click', function(event) {
-
         event.preventDefault();
 
         // Get username and password from user
@@ -153,7 +179,7 @@
         const password = prompt('Please enter the admin password: ');
 
         // Make sure user provides input
-        if ((userName == "") || (password == "")) {
+        if ((userName == "") || (password == "") || (userName == null) || (password == null)) {
             alert('Please enter values for both username and password');
             return false;
         }
@@ -170,22 +196,24 @@
         }
 
         // Create a new request object
-        const request = new XMLHttpRequest();
+        // const request = new XMLHttpRequest();
+        //
+        // // Set HTTP method and URL for the request
+        // request.open('GET', 'http://localhost:3000/data', true);
+        //
+        // // Set content type
+        // request.setRequestHeader('Content-Type', 'application/json');
+        //
+        // // Function to handle the response
+        // request.onload = function() {
+        //     if (request.status === 200) {
+        //         console.log('Response:', request.responseText);
+        //     } else {
+        //         console.log('Request failed.  Returned status of', request.status);
+        //         }
+        // };
 
-        // Set HTTP method and URL for the request
-        request.open('GET', 'https://wssu.database.windows.net:1433');
-
-        // Set content type
-        request.setRequestHeader('Content-Type', 'application/json');
-
-        // Function to handle the response
-        request.onload = function() {
-            if (request.status === 200) {
-                console.log('Response:', request.responseText);
-            } else {
-                console.log('Request failed.  Returned status of', request.status);
-                }
-        };
+        //getStudent()
 
         // Send the request with the input data as a JSON string
         // request.send(JSON.stringify(adminInput));
