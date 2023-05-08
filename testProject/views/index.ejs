@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CS Project Management System</title>
+    <link rel="icon" type="image/png" href='rams_circle.jpg'/>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #DC1A32;
+        }
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #8A0808;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        header {
+            background-color: #DC1A32;
+            padding: 30px;
+            text-align: center;
+            font-size: 35px;
+            color: white;
+        }
+
+        nav {
+            float: left;
+            width: 30%;
+            height: 500px;
+            background: #DC1A32;
+            padding: 20px;
+            border-bottom: 3px solid black;
+            left: 0;
+            z-index: -1;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            width:100%;
+        }
+
+        article {
+            float: left;
+            padding: 40px;
+            width: 70%;
+            background-color: white;
+            height: 500px;
+            border-bottom: 3px solid black;
+        }
+
+        section:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+
+        footer {
+            background-color: white;
+            padding: 30px;
+            text-align: center;
+            color: black;
+            bottom: 0;
+        }
+
+        @media (max-width: 600px) {
+        nav, article {
+            width: 100%;
+            height: auto;
+            }
+        }
+    </style>
+</head>
+  <body>
+        <div style="overflow-x: hidden; border-bottom: 3px solid black; width: 100%; height: 50%; left: 0">
+          <img style="position: relative; left: 0; top: 0; height: 200px; width: 700px;" src="wssu_banner.png">
+        </div>
+        <section style="left: 0px">
+            <nav>
+                <ul>
+                    <li><a class="active" href="index.html">Home</a></li>
+                    <li><a href="admin.html" id="admin">Admin Log-in</a></li>
+                    <li><a href="queries.html">Query Info</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><img src="rams_circle2.jpg" style="position: sticky; height: 100%; width: 400px; left: 5px" alt="rams"></li>
+                </ul>
+            </nav>
+            <article>
+                <form name="form">
+                    <p style="font-size: 30px">
+                        <u>Feel free to provide your query details below:</u>
+                    </p>
+
+                    <label for="name" style="font-size: 25px;">Student Name: </label>
+                    <input type="text" placeholder="John Doe" id="name" style="width: 200px; height: 40px; font-size: 15px"><br><br>
+
+                    <label for="project_name" style="font-size: 25px">Project Name: </label>
+                    <input type="text" placeholder="Project Management" id="project_name" style="width: 200px; height: 40px; font-size: 15px"><br><br>
+
+                    <label for="faculty_name" style="font-size: 25px">Faculty Member Name: </label>
+                    <input type="text" placeholder="Mustafa Atay" id="faculty_name" style="width: 200px; height: 40px; font-size: 15px"><br><br>
+
+                    <label for="date_one" style="font-size: 25px">From Date: </label>
+                    <input type="date" id="date_one" style="width: 230px; height: 40px; font-size: 15px"><br><br>
+
+                    <label for="date_two" style="font-size: 25px">To Date: </label>
+                    <input type="date" id="date_two" style="width: 230px; height: 40px; font-size: 15px"><br><br>
+
+                    <label>
+                        <input type = "submit" value = "Submit" style="font-size: 25px; height: 40px; width: 200px">
+                    </label>
+                </form>
+        </article>
+        </section>
+        <footer>
+          <p style="font-size: 25px">Project-2: CS Project Management System</p>
+          <p style="font-size: 25px">Hector Santiago & Donovan Benson</p>
+          <p style="font-size: 25px">CST-6306-01</p>
+        </footer>
+  </body>
+    <script>
+
+    </script>
+<!--    <script type="module" src="scripts/dbConnection.js">-->
+
+<!--    </script>-->
+<!--  <script data-main="scripts/dbConnection" src = scripts/require.js>-->
+<!--      // function getStudent(){-->
+<!--      //   const request = new sql.Request();-->
+<!--      //     request.query('SELECT * FROM Student', function (err, result) {-->
+<!--      //       if (err) console.log(err);-->
+<!--      //       console.log(result.recordset);-->
+<!--      //       sql.close();-->
+<!--      //     })-->
+<!--    //}-->
+<!--  </script>-->
+
+<!--  <script src="testConnection.js">-->
+<!--      const xhr = new XMLHttpRequest();-->
+<!--        xhr.onreadystatechange = () => {-->
+<!--          if (xhr.readyState === 4 && xhr.status === 200) {-->
+<!--            const response = JSON.parse(xhr.responseText);-->
+<!--            console.log(response);-->
+<!--          }-->
+<!--        };-->
+<!--        xhr.open('GET', 'http://localhost:3000/data');-->
+<!--        xhr.send();-->
+<!--        console.log(xhr.responseText)-->
+<!--  </script>-->
+
+  <script>
+    // Get admin id
+    const admin = document.getElementById('admin');
+
+    // listen for admin id
+    admin.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        // Get username and password from user
+        const userName = prompt('Please enter the admin username: ');
+        const password = prompt('Please enter the admin password: ');
+
+        // Make sure user provides input
+        if ((userName == "") || (password == "") || (userName == null) || (password == null)) {
+            alert('Please enter values for both username and password');
+            return false;
+        }
+
+        // Log the user input
+        console.log('Username Input: ', userName);
+        console.log('Password Input: ', password);
+
+
+        // Define input
+        const adminInput = {
+            userName: userName,
+            password: password
+        }
+
+        // Create a new request object
+        // const request = new XMLHttpRequest();
+        //
+        // // Set HTTP method and URL for the request
+        // request.open('GET', 'http://localhost:3000/data', true);
+        //
+        // // Set content type
+        // request.setRequestHeader('Content-Type', 'application/json');
+        //
+        // // Function to handle the response
+        // request.onload = function() {
+        //     if (request.status === 200) {
+        //         console.log('Response:', request.responseText);
+        //     } else {
+        //         console.log('Request failed.  Returned status of', request.status);
+        //         }
+        // };
+
+        //getStudent()
+
+        // Send the request with the input data as a JSON string
+        // request.send(JSON.stringify(adminInput));
+    });
+
+  </script>
+</html>
